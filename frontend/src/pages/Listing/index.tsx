@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { MoviePage } from "types/movie";
 
 function Listing() {
-  const [pageNumber, setPageNumber] = useState(0);
+  const [pageNumber] = useState(0);
 
   const [page, setPage] = useState<MoviePage>({
     content: [],
@@ -22,7 +22,7 @@ function Listing() {
 
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/movies?size=12&page=${pageNumber}&sort=score`)
+      .get(`${BASE_URL}/movies?size=12&page=${pageNumber}&sort=id`)
       .then((response) => {
         const data = response.data as MoviePage;
         setPage(data);
